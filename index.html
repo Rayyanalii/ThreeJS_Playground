@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ThreeJS Playground</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body class="text-white">
+    <div class="min-h-screen bg-radial from-slate-800 to-black text-white">
+      <div class="pt-15 pb-10">
+        <h1
+          id="main-title"
+          class="text-center text-5xl md:text-6xl font-bold font-sans text-white drop-shadow-[0_2px_20px_rgba(255,255,255,0.4)] tracking-wide"
+        >
+          <span
+            class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
+          >
+            ThreeJS Playground
+          </span>
+        </h1>
+
+        <div id="credit" class="absolute top-4 right-4 opacity-0">
+          Made by
+          <a href="https://github.com/Rayyanalii" class="underline"
+            >Rayyan Ali</a
+          >
+        </div>
+      </div>
+
+      <div class="relative flex items-center mt-20">
+        <button
+          id="scrollLeft"
+          class="ml-4 bg-white text-black rounded-full w-10 h-10 flex items-center justify-center z-10 hover:scale-110 transition opacity-0 scrollClass"
+        >
+          ‹
+        </button>
+
+        <div
+          class="overflow-x-auto no-scrollbar px-10 py-10 w-full"
+          id="carousel"
+        >
+          <div class="flex gap-20 items-center w-max">
+            <div class="max-w-xs w-full flex-shrink-0 project-card opacity-0">
+              <h2
+                class="text-center text-2xl md:text-3xl font-bold tracking-wide text-white drop-shadow-[0_1px_10px_rgba(255,255,255,0.2)]"
+              >
+                Simple Objects
+              </h2>
+
+              <div
+                class="bg-white mt-4 border border-white rounded-lg overflow-hidden relative w-full aspect-square"
+              >
+                <a href="/src/Simple_Object/index.html">
+                  <img
+                    src="./assets/displays/SimpleObjects.png"
+                    alt=""
+                    class="w-full h-full object-cover object-center hover:scale-110 transition-all duration-200 cursor-pointer"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <div class="max-w-xs w-full flex-shrink-0 project-card opacity-0">
+              <h2
+                class="text-center text-2xl md:text-3xl font-bold tracking-wide text-white drop-shadow-[0_1px_10px_rgba(255,255,255,0.2)]"
+              >
+                Earth
+              </h2>
+
+              <div
+                class="bg-white mt-4 border border-white rounded-lg overflow-hidden relative w-full aspect-square"
+              >
+                <a href="/src/Earth/index.html">
+                  <img
+                    src="./assets/displays/Earth.png"
+                    alt=""
+                    class="w-full h-full object-cover hover:scale-110 transition-all duration-200 cursor-pointer"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <div class="max-w-xs w-full flex-shrink-0 project-card opacity-0">
+              <h2
+                class="text-center text-2xl md:text-3xl font-bold tracking-wide text-white drop-shadow-[0_1px_10px_rgba(255,255,255,0.2)]"
+              >
+                Solar System
+              </h2>
+
+              <div
+                class="bg-white mt-4 border border-white rounded-lg overflow-hidden relative w-full aspect-square"
+              >
+                <a href="/src/SolarSystem/index.html">
+                  <img
+                    src="./assets/displays/SolarSystem.png"
+                    alt=""
+                    class="w-full h-full object-cover hover:scale-110 transition-all duration-200 cursor-pointer"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <div class="max-w-xs w-full flex-shrink-0 project-card opacity-0">
+              <h2
+                class="text-center text-2xl md:text-3xl font-bold tracking-wide text-white drop-shadow-[0_1px_10px_rgba(255,255,255,0.2)]"
+              >
+                Follow-Thru Tunnel
+              </h2>
+
+              <div
+                class="bg-white mt-4 border border-white rounded-lg overflow-hidden relative w-full aspect-square"
+              >
+                <a href="/src/Tunnel/index.html">
+                  <img
+                    src="./assets/displays/Tunnel.png"
+                    alt=""
+                    class="w-full h-full object-cover hover:scale-110 transition-all duration-200 cursor-pointer"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <div class="max-w-xs w-full flex-shrink-0 project-card opacity-0">
+              <h2
+                class="text-center text-2xl md:text-3xl font-bold tracking-wide text-white drop-shadow-[0_1px_10px_rgba(255,255,255,0.2)]"
+              >
+                World Generation
+              </h2>
+
+              <div
+                class="bg-white mt-4 border border-white rounded-lg overflow-hidden relative w-full aspect-square"
+              >
+                <a href="/src/ProceduralWorldGeneration/index.html">
+                  <img
+                    src="./assets/displays/Procedural.png"
+                    alt=""
+                    class="w-full h-full object-cover hover:scale-110 transition-all duration-200 cursor-pointer"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          id="scrollRight"
+          class="mr-4 bg-white text-black rounded-full w-10 h-10 flex items-center justify-center z-10 hover:scale-110 transition opacity-0 scrollClass"
+        >
+          ›
+        </button>
+      </div>
+      <script type="module">
+        import { gsap } from "gsap";
+        const carousel = document.getElementById("carousel");
+        const scrollLeftBtn = document.getElementById("scrollLeft");
+        const scrollRightBtn = document.getElementById("scrollRight");
+
+        scrollLeftBtn.addEventListener("click", () => {
+          carousel.scrollBy({ left: -300, behavior: "smooth" });
+        });
+
+        scrollRightBtn.addEventListener("click", () => {
+          carousel.scrollBy({ left: 300, behavior: "smooth" });
+        });
+
+        const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+        tl.from("#main-title", {
+          y: -200,
+          opacity: 0,
+          duration: 1.5,
+        })
+          .to(
+            "#credit",
+            {
+              opacity: 1,
+              y: 10,
+              duration: 0.8,
+            },
+            "-=0.5"
+          )
+          .to(
+            ".scrollClass",
+            {
+              opacity: 1,
+              duration: 0.8,
+            },
+            "-=0.5"
+          )
+          .to(
+            ".project-card",
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 1,
+              stagger: 0.2,
+            },
+            "-=0.5"
+          );
+      </script>
+    </div>
+  </body>
+</html>
