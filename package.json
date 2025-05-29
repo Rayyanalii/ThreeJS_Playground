@@ -11,6 +11,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "cannon-es": "^0.20.0",
     "gsap": "^3.13.0",
     "three": "^0.176.0"
   },
